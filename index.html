@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Вердикт — прототип</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="page-bg">
+
+  <div class="pitch-tag">Concept · Прототип · DEMO для Sber500 × DISRUPT</div>
+
+  <div class="phone" id="phone">
+
+    <div class="statusbar">
+      <span class="sb-time">9:41</span>
+      <span class="sb-icons">
+        <svg width="18" height="12" viewBox="0 0 18 12" fill="none"><rect x="0" y="7" width="3" height="5" rx="0.5" fill="currentColor"/><rect x="5" y="4.5" width="3" height="7.5" rx="0.5" fill="currentColor"/><rect x="10" y="2" width="3" height="10" rx="0.5" fill="currentColor"/><rect x="15" y="0" width="3" height="12" rx="0.5" fill="currentColor" opacity="0.35"/></svg>
+        <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><path d="M8 3C10.5 3 12.7 4 14.3 5.6L15.5 4.4C13.5 2.4 10.9 1 8 1C5.1 1 2.5 2.4 0.5 4.4L1.7 5.6C3.3 4 5.5 3 8 3Z" fill="currentColor"/><path d="M8 6.2C9.5 6.2 10.9 6.8 11.9 7.8L10.7 9C10 8.3 9 7.9 8 7.9C7 7.9 6 8.3 5.3 9L4.1 7.8C5.1 6.8 6.5 6.2 8 6.2Z" fill="currentColor"/><circle cx="8" cy="10.5" r="1.3" fill="currentColor"/></svg>
+        <svg width="24" height="12" viewBox="0 0 24 12" fill="none"><rect x="1" y="1" width="20" height="10" rx="2.5" stroke="currentColor" stroke-width="1" fill="none"/><rect x="2.5" y="2.5" width="15" height="7" rx="1.3" fill="currentColor"/><rect x="22" y="4" width="1.5" height="4" rx="0.7" fill="currentColor"/></svg>
+      </span>
+    </div>
+
+    <div class="app" id="app">
+
+      <!-- ===================== HOME ===================== -->
+      <section class="screen active" id="screen-home" data-screen="home">
+
+        <div class="tg-appbar">
+          <div class="appbar-title">Вердикт</div>
+          <button class="appbar-btn" id="btn-search" aria-label="Поиск">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none"><circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="1.8"/><path d="M15.5 15.5L20 20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+
+        <button class="daily-bar" id="daily-bar">
+          <span class="db-avatars">
+            <span class="db-av av-orange">💰</span>
+            <span class="db-av av-pink">❤️</span>
+            <span class="db-av av-blue">💼</span>
+          </span>
+          <span class="db-title">Топ дебат · идёт голосование</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 3.5a2.5 2.5 0 00-2.5 2.5v6a2.5 2.5 0 005 0V6A2.5 2.5 0 0012 3.5z" fill="currentColor"/><path d="M6 11.5V12a6 6 0 0012 0v-.5M12 18v3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+
+        <div class="scroll">
+
+          <div class="greeting">Доброе утро, Алекс</div>
+
+          <div class="daily-progress">
+            <div class="dp-label">Сегодня прочитано <b><span id="dp-count">3</span> из 5</b> историй</div>
+            <div class="dp-dots" id="dp-dots"></div>
+          </div>
+
+          <div id="continue-block"></div>
+
+          <div class="section-label">Обсуждения дня</div>
+
+          <div class="feed" id="feed"></div>
+
+          <div class="bottom-spacer"></div>
+        </div>
+      </section>
+
+      <!-- ===================== STORY + PRIMARY VOTE ===================== -->
+      <section class="screen" id="screen-story" data-screen="story">
+        <div class="debate-topbar">
+          <button class="icon-btn" id="btn-story-back" aria-label="Назад">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M15 6L9 12L15 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="topbar-title">История дня</div>
+          <div style="width:40px"></div>
+        </div>
+        <div class="scroll">
+          <div class="step-content" id="story-content"></div>
+          <div class="bottom-spacer"></div>
+        </div>
+      </section>
+
+      <!-- ===================== VOTE SAVED ===================== -->
+      <section class="screen" id="screen-voted" data-screen="voted">
+        <div class="debate-topbar">
+          <button class="icon-btn" id="btn-voted-back" aria-label="Назад">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M15 6L9 12L15 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="topbar-title">Твой ответ</div>
+          <div style="width:40px"></div>
+        </div>
+        <div class="scroll">
+          <div class="step-content" id="voted-content"></div>
+          <div class="bottom-spacer"></div>
+        </div>
+      </section>
+
+      <!-- ===================== DEBATE HUB ===================== -->
+      <section class="screen" id="screen-debate" data-screen="debate">
+        <div class="hub-topbar">
+          <button class="icon-btn" id="btn-hub-back" aria-label="Назад">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M15 6L9 12L15 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="hub-head">
+            <div class="hub-title">Он потратил общие сбережения на бизнес брата</div>
+            <div class="hub-meta" id="hub-meta">18 742 голоса · 4 321 комментарий</div>
+          </div>
+        </div>
+
+        <div class="seg" id="hub-seg">
+          <button class="seg-btn active" data-hubtab="map"><span class="seg-ico">✨</span><span>О чём спорят</span></button>
+          <button class="seg-btn" data-hubtab="discussion"><span class="seg-ico">💬</span><span>Комментарии</span></button>
+          <button class="seg-btn" data-hubtab="summary"><span class="seg-ico">🏆</span><span>Итог</span></button>
+        </div>
+
+        <div class="scroll" id="hub-scroll">
+          <div id="hub-content"></div>
+          <div class="bottom-spacer"></div>
+        </div>
+
+        <div class="composer-bar" id="composer-bar">
+          <div class="composer-collapsed" id="composer-collapsed">
+            <div class="composer-avatar">А</div>
+            <button class="composer-fake-input" id="composer-open">Написать комментарий...</button>
+          </div>
+          <div class="composer-expanded" id="composer-expanded">
+            <div class="composer-your-pos">Ты ответил: <b id="composer-pos">Неправ муж</b></div>
+            <textarea id="composer-text" placeholder="Я считаю, что..."></textarea>
+            <div class="composer-actions">
+              <button class="btn-ghost" id="composer-cancel">Отмена</button>
+              <button class="btn-primary btn-inline" id="composer-publish">Опубликовать</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== THREAD ===================== -->
+      <section class="screen" id="screen-thread" data-screen="thread">
+        <div class="debate-topbar">
+          <button class="icon-btn" id="btn-thread-back" aria-label="Назад">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M15 6L9 12L15 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="topbar-title">Ответы</div>
+          <div style="width:40px"></div>
+        </div>
+        <div class="scroll">
+          <div id="thread-content"></div>
+          <div class="bottom-spacer"></div>
+        </div>
+        <div class="composer-bar">
+          <div class="composer-collapsed" id="thread-collapsed">
+            <div class="composer-avatar">А</div>
+            <button class="composer-fake-input" id="thread-reply-open">Написать ответ...</button>
+          </div>
+          <div class="composer-expanded" id="thread-composer-expanded">
+            <textarea id="thread-text" placeholder="Твой ответ..."></textarea>
+            <div class="composer-actions">
+              <button class="btn-ghost" id="thread-cancel">Отмена</button>
+              <button class="btn-primary btn-inline" id="thread-publish">Ответить</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== AI POSITION ===================== -->
+      <section class="screen" id="screen-position" data-screen="position">
+        <div class="debate-topbar">
+          <button class="icon-btn" id="btn-position-back" aria-label="Назад">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M15 6L9 12L15 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="topbar-title">Одно из мнений</div>
+          <div style="width:40px"></div>
+        </div>
+        <div class="scroll">
+          <div id="position-content"></div>
+          <div class="bottom-spacer"></div>
+        </div>
+      </section>
+
+      <!-- ===================== FINAL VERDICT ===================== -->
+      <section class="screen" id="screen-verdict" data-screen="verdict">
+        <div class="debate-topbar">
+          <button class="icon-btn" id="btn-verdict-back" aria-label="Назад">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M15 6L9 12L15 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="topbar-title">Итоги спора</div>
+          <div style="width:40px"></div>
+        </div>
+        <div class="scroll">
+          <div id="verdict-content"></div>
+          <div class="bottom-spacer"></div>
+        </div>
+      </section>
+
+      <!-- ===================== FRIEND CHALLENGE ===================== -->
+      <section class="screen" id="screen-challenge" data-screen="challenge">
+        <div class="debate-topbar">
+          <button class="icon-btn" id="btn-challenge-back" aria-label="Назад">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M15 6L9 12L15 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="topbar-title">Вызов другу</div>
+          <div style="width:40px"></div>
+        </div>
+        <div class="scroll">
+          <div id="challenge-content"></div>
+          <div class="bottom-spacer"></div>
+        </div>
+      </section>
+
+      <!-- ===================== PROFILE ===================== -->
+      <section class="screen" id="screen-profile" data-screen="profile">
+        <div class="tg-appbar">
+          <div class="appbar-title">Профиль</div>
+          <button class="appbar-btn" id="btn-profile-info" aria-label="Как это работает">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.25" stroke="currentColor" stroke-width="1.7"/><rect x="11.15" y="10.5" width="1.7" height="6" rx="0.85" fill="currentColor"/><circle cx="12" cy="7.6" r="1" fill="currentColor"/></svg>
+          </button>
+        </div>
+        <div class="scroll">
+
+          <div class="profile-hero">
+            <div class="avatar">А</div>
+            <div class="profile-name">Алекс</div>
+            <div class="profile-handle">с нами с января 2026</div>
+          </div>
+
+          <div class="card score-card">
+            <div class="score-card-label">Твой рейтинг</div>
+            <div class="score-big"><span id="profile-score">87</span><span class="score-max">/100</span></div>
+            <div class="score-tag">Ты хорошо чувствуешь людей</div>
+          </div>
+
+          <div class="card">
+            <div class="card-title">Что у тебя получается</div>
+            <div class="trait" data-key="understanding"><div class="trait-row"><span>Понимание людей</span><span class="trait-val">87</span></div><div class="trait-track"><div class="trait-fill" style="width:87%"></div></div></div>
+            <div class="trait" data-key="argstrength"><div class="trait-row"><span>Умение объяснять</span><span class="trait-val">82</span></div><div class="trait-track"><div class="trait-fill" style="width:82%"></div></div></div>
+            <div class="trait" data-key="persuasion"><div class="trait-row"><span>Умение убеждать</span><span class="trait-val">91</span></div><div class="trait-track"><div class="trait-fill" style="width:91%"></div></div></div>
+            <div class="trait" data-key="analytics"><div class="trait-row"><span>Умение разбираться</span><span class="trait-val">79</span></div><div class="trait-track"><div class="trait-fill" style="width:79%"></div></div></div>
+            <div class="trait" data-key="independence"><div class="trait-row"><span>Не идёшь за толпой</span><span class="trait-val">88</span></div><div class="trait-track"><div class="trait-fill" style="width:88%"></div></div></div>
+          </div>
+
+          <div class="card">
+            <div class="card-title">Твои значки</div>
+            <div class="badge-row">
+              <div class="badge-pill"><span class="badge-emoji">🧲</span><div><div class="badge-name">Умеет убеждать</div><div class="badge-desc">Ты часто меняешь мнение других</div></div></div>
+              <div class="badge-pill"><span class="badge-emoji">🌶️</span><div><div class="badge-name">Идёт против всех</div><div class="badge-desc">Чаще среднего оказываешься в меньшинстве</div></div></div>
+              <div class="badge-pill"><span class="badge-emoji">🎯</span><div><div class="badge-name">Чувствует людей</div><div class="badge-desc">Хорошо угадываешь мнение сообщества</div></div></div>
+            </div>
+          </div>
+
+          <div class="card influence-mini">
+            <div class="card-title">Сколько людей ты убедил</div>
+            <div class="influence-mini-row">
+              <div><div class="im-num" id="profile-influence">1 248</div><div class="im-label">очков влияния</div></div>
+              <div><div class="im-num" id="profile-percentile">92%</div><div class="im-label">людей ты обошёл</div></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-title">Твоя неделя</div>
+            <div class="week-grid">
+              <div class="week-stat"><div class="week-num" id="w-stories">37</div><div class="week-label">историй</div></div>
+              <div class="week-stat"><div class="week-num" id="w-args">112</div><div class="week-label">комментариев</div></div>
+              <div class="week-stat"><div class="week-num" id="w-changed">8</div><div class="week-label">изменений мнения</div></div>
+              <div class="week-stat"><div class="week-num" id="w-convinced">126</div><div class="week-label">убеждённых</div></div>
+            </div>
+            <div class="week-accuracy">Как часто ты угадываешь мнение людей — <b id="w-accuracy">68%</b></div>
+            <div class="week-note"><b>Лучший момент:</b> твой комментарий про доверие в семье прочитали больше всех.</div>
+            <div class="week-note"><b>Промах недели:</b> ты был уверен, что все согласятся с тобой. А вышло наоборот.</div>
+          </div>
+
+          <button class="btn-secondary" id="btn-share-profile">Поделиться профилем</button>
+
+          <div class="disclaimer">Всё это считается по тому, как ты голосуешь и что пишешь. Со временем цифры меняются.</div>
+
+          <div class="bottom-spacer"></div>
+        </div>
+      </section>
+
+      <!-- ===================== ABOUT / AI ===================== -->
+      <section class="screen" id="screen-about" data-screen="about">
+        <div class="debate-topbar">
+          <button class="icon-btn" id="btn-about-back" aria-label="Назад">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M15 6L9 12L15 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="topbar-title">Как это работает</div>
+          <div style="width:40px"></div>
+        </div>
+        <div class="scroll">
+
+          <div class="about-block">
+            <h1 class="about-h1">Мы не придумываем конфликты.</h1>
+            <p class="about-p">AI ежедневно отслеживает публичные дискуссии в интернете и ищет ситуации, которые уже вызвали большой интерес, разделили людей и не имеют очевидного ответа.</p>
+          </div>
+
+          <div class="flow-diagram">
+            <div class="flow-step">Reddit / X / форумы / публичные дискуссии</div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-step accent">AI controversy engine</div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-step">5 самых интересных историй дня</div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-step">Ты</div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-step">Общий вердикт</div>
+          </div>
+
+          <div class="card">
+            <div class="card-title">Почему эта история попала сегодня?</div>
+            <div class="score-line"><span>Engagement</span><div class="score-track"><div class="score-fill" style="width:94%"></div></div><span class="score-num">94</span></div>
+            <div class="score-line"><span>Disagreement</span><div class="score-track"><div class="score-fill" style="width:91%"></div></div><span class="score-num">91</span></div>
+            <div class="score-line"><span>Emotional impact</span><div class="score-track"><div class="score-fill" style="width:88%"></div></div><span class="score-num">88</span></div>
+            <div class="score-line"><span>Argument diversity</span><div class="score-track"><div class="score-fill" style="width:86%"></div></div><span class="score-num">86</span></div>
+            <div class="score-line"><span>Ambiguity</span><div class="score-track"><div class="score-fill" style="width:93%"></div></div><span class="score-num">93</span></div>
+            <div class="controversy-total">Controversy Score <b>92</b></div>
+            <p class="about-p small">Мы ищем не самые популярные истории. Мы ищем истории, где людям действительно есть о чём спорить.</p>
+          </div>
+
+          <div class="section-label">Почему здесь нужен AI?</div>
+          <div class="ai-task-grid">
+            <div class="ai-task"><div class="ai-task-num">01</div><div class="ai-task-title">Находит конфликт</div><div class="ai-task-desc">Из миллионов публичных обсуждений</div></div>
+            <div class="ai-task"><div class="ai-task-num">02</div><div class="ai-task-title">Сжимает шум</div><div class="ai-task-desc">4 000 комментариев → 6 аргументов</div></div>
+            <div class="ai-task"><div class="ai-task-num">03</div><div class="ai-task-title">Находит разногласия</div><div class="ai-task-desc">Что действительно разделяет людей</div></div>
+            <div class="ai-task"><div class="ai-task-num">04</div><div class="ai-task-title">Собирает вердикт</div><div class="ai-task-desc">Не «топ-комментарий», а карта мнений</div></div>
+          </div>
+
+          <div class="card trust-card">
+            <div class="card-title">AI не решает, кто прав.</div>
+            <p class="about-p small">Он показывает: кто что думает, почему, где люди согласны, где расходятся, и какие аргументы меняют мнения.</p>
+          </div>
+
+          <div class="section-label">Почему это может стать массовым продуктом</div>
+          <div class="pitch-card"><div class="pitch-num">01</div><div class="pitch-title">Контент уже существует</div><div class="pitch-desc">Интернет каждый день создаёт миллионы конфликтов — темы не нужно придумывать с нуля.</div></div>
+          <div class="pitch-card"><div class="pitch-num">02</div><div class="pitch-title">AI превращает шум в игру</div><div class="pitch-desc">Тысячи комментариев → структурированный дебат → коллективный вердикт.</div></div>
+          <div class="pitch-card"><div class="pitch-num">03</div><div class="pitch-title">Каждый день новая причина вернуться</div><div class="pitch-desc">Новые истории, личный прогресс, влияние, социальное соревнование.</div></div>
+
+          <div class="mission-line">Цель: превратить коллективное мнение в ежедневный пользовательский ритуал.</div>
+
+          <div class="bottom-spacer"></div>
+        </div>
+      </section>
+
+      <!-- ===================== ONBOARDING ===================== -->
+      <section class="screen" id="screen-onboard" data-screen="onboard">
+        <div class="scroll">
+          <div class="step-content" id="onboard-content"></div>
+          <div class="bottom-spacer"></div>
+        </div>
+      </section>
+
+      <!-- ===================== HUB / "ЕЩЁ" ===================== -->
+      <section class="screen" id="screen-hub" data-screen="hub">
+        <div class="tg-appbar">
+          <div class="appbar-title">Ещё</div>
+        </div>
+        <div class="scroll">
+          <div class="section-label">Твой аккаунт</div>
+
+          <button class="hub-row" id="hub-row-notifications">
+            <span class="hub-row-icon">🔔</span>
+            <span class="hub-row-text">
+              <span class="hub-row-title">Уведомления</span>
+              <span class="hub-row-desc">Что нового в твоих спорах</span>
+            </span>
+            <span class="hub-row-badge" id="hub-row-badge" style="display:none">0</span>
+            <span class="hub-row-arrow">›</span>
+          </button>
+
+          <button class="hub-row" id="hub-row-weekly">
+            <span class="hub-row-icon">📊</span>
+            <span class="hub-row-text">
+              <span class="hub-row-title">Итоги недели</span>
+              <span class="hub-row-desc">Сколько историй, комментариев и кого ты убедил</span>
+            </span>
+            <span class="hub-row-arrow">›</span>
+          </button>
+
+          <button class="hub-row" id="hub-row-categories">
+            <span class="hub-row-icon">🏷️</span>
+            <span class="hub-row-text">
+              <span class="hub-row-title">Категории</span>
+              <span class="hub-row-desc">Выбери интересующие темы</span>
+            </span>
+            <span class="hub-row-arrow">›</span>
+          </button>
+
+          <div class="section-label">О продукте</div>
+
+          <button class="hub-row" id="hub-row-about">
+            <span class="hub-row-icon">🧠</span>
+            <span class="hub-row-text">
+              <span class="hub-row-title">Как это работает</span>
+              <span class="hub-row-desc">Откуда берутся истории и при чём тут AI</span>
+            </span>
+            <span class="hub-row-arrow">›</span>
+          </button>
+
+          <button class="hub-row" id="hub-row-restart">
+            <span class="hub-row-icon">🔁</span>
+            <span class="hub-row-text">
+              <span class="hub-row-title">Начать историю заново</span>
+              <span class="hub-row-desc">Сбросить свой ответ и пройти всё сначала</span>
+            </span>
+            <span class="hub-row-arrow">›</span>
+          </button>
+
+          <button class="hub-row" id="hub-row-replay">
+            <span class="hub-row-icon">🎬</span>
+            <span class="hub-row-text">
+              <span class="hub-row-title">Показать вступление заново</span>
+              <span class="hub-row-desc">Короткий intro в 3 экрана</span>
+            </span>
+            <span class="hub-row-arrow">›</span>
+          </button>
+
+          <div class="disclaimer">Концепт · Прототип для Sber500 × DISRUPT</div>
+          <div class="bottom-spacer"></div>
+        </div>
+      </section>
+
+      <!-- ===================== NOTIFICATIONS ===================== -->
+      <section class="screen" id="screen-notifications" data-screen="notifications">
+        <div class="debate-topbar">
+          <button class="icon-btn" id="btn-notif-back" aria-label="Назад">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M15 6L9 12L15 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="topbar-title">Уведомления</div>
+          <div style="width:40px"></div>
+        </div>
+        <div class="scroll">
+          <div class="notif-list" id="notif-list"></div>
+          <div class="bottom-spacer"></div>
+        </div>
+      </section>
+
+      <!-- ===================== CATEGORIES ===================== -->
+      <section class="screen" id="screen-categories" data-screen="categories">
+        <div class="debate-topbar">
+          <button class="icon-btn" id="btn-categories-back" aria-label="Назад">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M15 6L9 12L15 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="topbar-title">Категории</div>
+          <div style="width:40px"></div>
+        </div>
+        <div class="scroll">
+          <div class="question-block" style="margin-top:10px;text-align:left">
+            <div class="question-title" style="text-align:left">Выбери интересующие темы</div>
+            <div class="question-hint" style="text-align:left">Мы будем чаще показывать истории из этих категорий</div>
+          </div>
+          <div class="cat-grid" id="cat-grid"></div>
+          <button class="btn-primary" id="btn-cat-save" style="margin-top:20px">Сохранить</button>
+          <div class="bottom-spacer"></div>
+        </div>
+      </section>
+
+      <!-- ===================== WEEKLY RECAP (FULL) ===================== -->
+      <section class="screen" id="screen-weekly" data-screen="weekly">
+        <div class="debate-topbar">
+          <button class="icon-btn" id="btn-weekly-back" aria-label="Назад">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M15 6L9 12L15 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="topbar-title">Твоя неделя</div>
+          <div style="width:40px"></div>
+        </div>
+        <div class="scroll">
+          <div class="week-grid" id="weekly-grid" style="margin-top:16px"></div>
+          <div class="week-accuracy" id="weekly-accuracy"></div>
+
+          <div class="card">
+            <div class="card-title">Лучший момент недели</div>
+            <p class="about-p small">Твой аргумент про разделение финансов в истории «Он потратил общие сбережения на бизнес брата» вошёл в топ самых убедительных аргументов дня.</p>
+          </div>
+
+          <div class="card">
+            <div class="card-title">Самая неожиданная ошибка</div>
+            <p class="about-p small">Ты был уверен, что большинство поддержит одну сторону. На самом деле поддержало другую — сообщество разошлось не так, как ты предполагал.</p>
+          </div>
+
+          <div class="bottom-spacer"></div>
+        </div>
+      </section>
+
+    </div>
+
+    <nav class="tabbar tabbar-3" id="tabbar">
+      <button class="tab-btn active" data-tab="home">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 11L12 4L20 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10V19H18V10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Главная</span>
+      </button>
+      <button class="tab-btn" data-tab="profile">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8.2" r="3.4" stroke="currentColor" stroke-width="1.8"/><path d="M5 20C5 16.5 8 14.5 12 14.5C16 14.5 19 16.5 19 20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <span>Профиль</span>
+      </button>
+      <button class="tab-btn" data-tab="hub">
+        <span class="tab-icon-wrap">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="2.5" stroke="currentColor" stroke-width="1.8"/><rect x="11" y="1.5" width="2" height="3" rx="1" fill="currentColor"/><rect x="11" y="19.5" width="2" height="3" rx="1" fill="currentColor"/><rect x="1.5" y="11" width="3" height="2" rx="1" fill="currentColor"/><rect x="19.5" y="11" width="3" height="2" rx="1" fill="currentColor"/><rect x="4" y="4" width="2" height="2" rx="1" fill="currentColor" transform="rotate(45 5 5)"/><rect x="18" y="18" width="2" height="2" rx="1" fill="currentColor" transform="rotate(45 19 19)"/><rect x="4" y="18" width="2" height="2" rx="1" fill="currentColor" transform="rotate(-45 5 19)"/><rect x="18" y="4" width="2" height="2" rx="1" fill="currentColor" transform="rotate(-45 19 5)"/></svg>
+          <span class="tab-badge" id="hub-tab-badge" style="display:none">0</span>
+        </span>
+        <span>Настройки</span>
+      </button>
+    </nav>
+
+    <div class="home-indicator"></div>
+  </div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
